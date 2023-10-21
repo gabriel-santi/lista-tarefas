@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+
+package Arquitetura{
+
+    class TarefasController{
+        List<Tarefa> tarefas
+
+        void adicionarTarefa(String descricao)
+        Tarefa obterTarefa(int id)
+        List<Tarefa> obterTarefasNaoConcluidas()
+        List<Tarefa> obterTarefas()
+        void concluirTarefa(int id)
+    }
+    TarefasController::tarefas-->Tarefa
+
+    class Tarefa{
+        int id
+        String descricao
+        bool finalizada
+
+        int getId()
+        String getDescricao()
+        bool getFinalizada()
+        void setFinalizada()
+    }
+}
+@enduml
