@@ -3,6 +3,18 @@ left to right direction
 
 package Arquitetura{
 
+    class TarefasView{
+        void exibirMenu()
+        void adicionarTarefas()
+        void concluirTarefas()
+        void obterTarefas()
+        void obterTarefasNaoConcluidas()
+    }
+    TarefasView::adicionarTarefas-->TarefasController
+    TarefasView::concluirTarefas-->TarefasController
+    TarefasView::obterTarefas-->TarefasController
+    TarefasView::obterTarefasNaoConcluidas-->TarefasController
+
     class TarefasController{
         List<Tarefa> tarefas
 
