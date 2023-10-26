@@ -10,11 +10,15 @@ import java.util.List;
 public class TarefaController {
     List<Tarefa> listaTarefas;
 
-    void adicionarTarefa(String descricao) throws DescricaoInvalida {
-        listaTarefas.add(new Tarefa(descricao, listaTarefas.size()));
+    public TarefaController(){
+        listaTarefas = new ArrayList<>();
     }
 
-    Tarefa obterTarefa(int id) throws TarefaNaoEncontradaException {
+    public void adicionarTarefa(String descricao) throws DescricaoInvalida {
+        listaTarefas.add(new Tarefa(descricao, listaTarefas.size()+1));
+    }
+
+    public Tarefa obterTarefa(int id) throws TarefaNaoEncontradaException {
         for(Tarefa tarefa : listaTarefas){
             if (tarefa.getId() == id) {
                 return tarefa;
@@ -23,11 +27,11 @@ public class TarefaController {
         throw new TarefaNaoEncontradaException();
     }
 
-    List<Tarefa> obterTarefasNaoConcluidas(){
+    public List<Tarefa> obterTarefasNaoConcluidas(){
         List<Tarefa> tarefasNaoConcluidas = new ArrayList<>();
 
         for(Tarefa tarefa : listaTarefas){
-            if (tarefa.estaFinalizada()) {
+            if (!tarefa.estaFinalizada()) {
                 tarefasNaoConcluidas.add(tarefa);
             }
         }
@@ -35,11 +39,11 @@ public class TarefaController {
         return tarefasNaoConcluidas;
     }
 
-    List<Tarefa> obterTarefas(){
+    public List<Tarefa> obterTarefas(){
         return listaTarefas;
     }
 
-    void concluirTarefa(int id) throws TarefaNaoEncontradaException {
+    public void concluirTarefa(int id) throws TarefaNaoEncontradaException {
         for(Tarefa tarefa : listaTarefas){
             if (tarefa.getId() == id) {
                 tarefa.setFinalizada();
